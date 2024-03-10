@@ -21,3 +21,7 @@
 
 ## Mailer
 - http://localhost:8025/
+
+## Nice to know
+- Run `yarn stylelint` to get SCSS files warnings
+- Run `yarn stylelint-fix` to automatically fix SCSS files

@@ -15,7 +15,9 @@
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "watch": "encore dev --watch",
-        "build": "encore production --progress"
+        "build": "encore production --progress",
+        "stylelint": "npx stylelint '**/*.scss'",
+        "stylelint-fix": "npx stylelint '**/*.scss' --fix"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.5.1",
@@ -23,9 +25,14 @@
         "autoprefixer": "^10.4.18",
         "bootstrap": "^5.3.3",
         "file-loader": "^6.2.0",
+        "postcss-lit": "^1.1.1",
         "postcss-loader": "^7.0.0",
         "sass": "^1.71.1",
-        "sass-loader": "^14.1.1"
+        "sass-loader": "^14.1.1",
+        "stylelint": "^16.2.1",
+        "stylelint-config-standard": "^36.0.0",
+        "stylelint-config-standard-scss": "^13.0.0",
+        "stylelint-order": "^6.0.4"
     },
     "browserslist": [
         "defaults"
