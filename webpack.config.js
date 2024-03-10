@@ -73,6 +73,8 @@ Encore
         from: './assets/images',
         to: 'images/[path][name].[hash:8].[ext]'
     })
+
+    .enablePostCssLoader()
 ;
 
 module.exports = Encore.getWebpackConfig();
