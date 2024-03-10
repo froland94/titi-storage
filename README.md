@@ -4,6 +4,11 @@
 2. Run `docker compose up --build`
 3. Open `https://localhost`
 
+### Composer & Yarn
+1. Run `composer install`
+2. Run `yarn install`
+3. Run `yarn dev`
+
 ### Database
 1. Run `php bin/console doctrine:database:create` to create database
 2. Run `php bin/console doctrine:migration:migrate` to create database tables
