@@ -5,6 +5,9 @@
     </a>
     <ul class="dropdown-menu text-small">
         <li>
+            Szia {{ app.user.userIdentifier }}
+        </li>
+        <li>
             <a class="dropdown-item">
                 Beállítások
             </a>
@@ -18,7 +21,7 @@
             <hr class="dropdown-divider">
         </li>
         <li>
-            <a class="dropdown-item">
+            <a href="{{ path('app_logout') }}" class="dropdown-item">
                 Kilépés
             </a>
         </li>

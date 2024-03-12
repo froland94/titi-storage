@@ -5,7 +5,9 @@
 
             {% include 'base/header/menu.html.twig' %}
 
-            {% include 'base/header/submenu.html.twig' %}
+            {% if app.user %}
+                {% include 'base/header/submenu.html.twig' %}
+            {% endif %}
         </div>
     </div>
 </header>
