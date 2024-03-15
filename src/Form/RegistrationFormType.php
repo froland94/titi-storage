@@ -15,51 +15,44 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationFormType extends AbstractType
 {
+    public function __construct(private readonly TranslatorInterface $translator) {}
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a email.',
-                    ]),
-                    new Email([
-                        'message' => 'This value is not a valid email address.',
-                    ]),
+                    new NotBlank(),
+                    new Email(),
                 ],
                 'row_attr' => [
                     'class' => 'form-floating mb-3'
                 ],
                 'attr' => [
-                    'placeholder' => 'Email cím',
+                    'placeholder' => $this->translator->trans('form.label.email', domain: 'registration')
                 ],
-                'label' => 'Email cím',
+                'label' => $this->translator->trans('form.label.email', domain: 'registration'),
             ])
             ->add('username', TextType::class, [
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a username.',
-                    ]),
+                    new NotBlank(),
                 ],
                 'row_attr' => [
                     'class' => 'form-floating mb-3'
                 ],
                 'attr' => [
-                    'placeholder' => 'Felhasználónév',
+                    'placeholder' => $this->translator->trans('form.label.username', domain: 'registration'),
                 ],
-                'label' => 'Felhasználónév',
+                'label' => $this->translator->trans('form.label.username', domain: 'registration'),
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
+                    new NotBlank(),
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
@@ -71,22 +64,20 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-floating mb-3'
                 ],
                 'attr' => [
-                    'placeholder' => 'Jelszó',
+                    'placeholder' => $this->translator->trans('form.label.password', domain: 'registration'),
                     'autocomplete' => 'new-password',
                 ],
-                'label' => 'Jelszó',
+                'label' => $this->translator->trans('form.label.password', domain: 'registration'),
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
+                    new IsTrue(),
                 ],
-                'label' => 'Elfogadom a felhasználási feltételeket.',
+                'label' => $this->translator->trans('form.label.terms', domain: 'registration'),
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Regisztráció',
+                'label' => $this->translator->trans('form.button.register', domain: 'registration'),
                 'attr' => [
                     'class' => 'btn btn-secondary py-2 w-100 me-1 py-2 w-100 me-1'
                 ]
@@ -98,6 +89,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'required' => false,
         ]);
     }
 }

@@ -1,11 +1,13 @@
+{% trans_default_domain 'registration' %}
+
 {% if app.user and app.user.getVerifiedAt is null %}
     <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-        Kérjük, erősítse meg az email címét, különben fiókja törlésre kerül.
+        {{ verification.warning.info|trans }}
         <a id="resend-verification-email-btn"
            data-route="{{ path('app_resend_verification_email') }}"
            href="#"
            class="alert-link">
-            Megerősítő email újraküldése
+            {{ verification.warning.resend_verification|trans }}
         </a>
 
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

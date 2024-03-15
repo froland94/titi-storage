@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% trans_default_domain 'registration' %}
+
 {% block title %}
-    Regisztráció | TitiStorage
+    {{ 'page.title'|trans }}
 {% endblock %}
 
 {% block body %}
    <div class="container">
        {% for flash_error in app.flashes('verify_email_error') %}
-           <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+           <div class="alert alert-danger" role="alert">
+               {{ flash_error }}
+           </div>
        {% endfor %}
 
        {{ form_errors(registrationForm) }}
@@ -19,7 +23,7 @@
        }) }}
 
        <h1 class="h3 mb-3 fw-normal">
-           Regisztráció
+           {{ 'form.title'|trans }}
        </h1>
 
        {{ form_end(registrationForm) }}

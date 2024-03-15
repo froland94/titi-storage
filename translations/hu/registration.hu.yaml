@@ -1,0 +1,22 @@
+page:
+    title: 'Regisztráció | TitiStorage'
+
+form:
+    title: 'Regisztráció'
+
+    label:
+        email: 'Email cím'
+        username: 'Felhasználónév'
+        password: 'Jelszó'
+        terms: 'Elfogadom a felhasználási feltételeket.'
+
+    button:
+        register: 'Regisztráció'
+
+verification:
+    success: 'Köszönjük az email cím megerősítését, fiókja mostantól teljes körűen elérhető.'
+    success_resend: 'Sikeresen újraküldtük a megerősítő emailt, kérjük, ellenőrizze postafiókját.'
+
+    warning:
+        info: 'Kérjük, erősítse meg az email címét, különben fiókja törlésre kerül.'
+        resend_verification: 'Megerősítő email újraküldése'

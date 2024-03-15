@@ -15,16 +15,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    private EmailVerifier $emailVerifier;
-
-    public function __construct(EmailVerifier $emailVerifier)
-    {
-        $this->emailVerifier = $emailVerifier;
-    }
+    public function __construct(
+        private readonly EmailVerifier $emailVerifier,
+        private readonly TranslatorInterface $translator,
+    ) {}
 
     #[Route('/register', name: 'app_register')]
     public function register(
@@ -92,7 +91,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        $this->addFlash('success', 'Köszönjük az email cím megerősítését, fiókja mostantól teljes körűen elérhető.');
+        $this->addFlash('success', $this->translator->trans('verification.success', domain: 'registration'));
 
         return $this->redirectToRoute('app_register');
     }
@@ -109,7 +108,7 @@ class RegistrationController extends AbstractController
         );
 
         return $this->json([
-            'message' => 'Sikeresen újraküldtük a megerősítő emailt, kérjük, ellenőrizze postafiókját.',
+            'message' => $this->translator->trans('verification.success_resend', domain: 'registration'),
         ]);
     }
 }

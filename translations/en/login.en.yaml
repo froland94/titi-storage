@@ -1,0 +1,17 @@
+page:
+    title: 'Login | TitiStorage'
+
+form:
+    title: 'Login'
+
+    label:
+        email: 'Email address'
+        password: 'Password'
+        remember_me: 'Remember me'
+
+    button:
+        login: 'Login'
+        register: 'Registration'
+
+    validation:
+        invalid_credentials: 'Invalid email address or password!'

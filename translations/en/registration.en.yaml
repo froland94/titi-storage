@@ -1,0 +1,22 @@
+page:
+    title: 'Registration | TitiStorage'
+
+form:
+    title: 'Registration'
+
+    label:
+        email: 'Email address'
+        username: 'Username'
+        password: 'Password'
+        terms: 'I accept the terms of use.'
+
+    button:
+        register: 'Register'
+
+verification:
+    success: 'Thank you for verifying your email address, your account is now fully accessible.'
+    success_resend: 'We have successfully resent the verification email, please check your inbox.'
+
+    warning:
+        info: 'Please verify your email address, otherwise your account will be deleted.'
+        resend_verification: 'Resend verification email'

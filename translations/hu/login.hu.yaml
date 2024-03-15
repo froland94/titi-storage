@@ -1,0 +1,17 @@
+page:
+    title: 'Belépés | TitiStorage'
+
+form:
+    title: 'Bejelentkezés'
+
+    label:
+        email: 'Email cím'
+        password: 'Jelszó'
+        remember_me: 'Bejelentkezve maradok'
+
+    button:
+        login: 'Belépés'
+        register: 'Regisztráció'
+
+    validation:
+        invalid_credentials: 'Hibás email cím vagy jelszó!'
