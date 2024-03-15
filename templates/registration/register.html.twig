@@ -22,35 +22,6 @@
            Regisztráció
        </h1>
 
-       {{ form_row(registrationForm.email, {
-           row_attr: {
-               'class': 'form-floating mb-3'
-           },
-           label: 'Email cím',
-           attr: {
-               placeholder: 'Jelszó',
-               required: false
-           },
-       }) }}
-
-       {{ form_row(registrationForm.plainPassword, {
-           row_attr: {
-               'class': 'form-floating mb-3'
-           },
-           label: 'Jelszó',
-           attr: {
-               placeholder: 'Jelszó'
-           },
-       }) }}
-
-       {{ form_row(registrationForm.agreeTerms, {
-           'label': 'Elfogadom a felhasználási feltételeket.'
-       }) }}
-
-       <button class="btn btn-secondary py-2 w-100 me-1" type="submit">
-           Regisztráció
-       </button>
-
        {{ form_end(registrationForm) }}
    </div>
 {% endblock %}

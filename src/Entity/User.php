@@ -27,14 +27,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
     #[ORM\Column]
     private ?string $password = null;
 
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
+
+    #[ORM\Column(length: 255)]
+    private ?string $username = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $registeredAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $verifiedAt = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $lastLoginAt = null;
 
     public function getId(): ?int
     {
@@ -60,7 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**
@@ -119,6 +128,54 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getRegisteredAt(): ?\DateTimeImmutable
+    {
+        return $this->registeredAt;
+    }
+
+    public function setRegisteredAt(): static
+    {
+        $this->registeredAt = new \DateTimeImmutable('now');
+
+        return $this;
+    }
+
+    public function getVerifiedAt(): ?\DateTimeImmutable
+    {
+        return $this->verifiedAt;
+    }
+
+    public function setVerifiedAt(): static
+    {
+        $this->verifiedAt = new \DateTimeImmutable('now');
+
+        return $this;
+    }
+
+    public function getLastLoginAt(): ?\DateTimeImmutable
+    {
+        return $this->lastLoginAt;
+    }
+
+    public function setLastLoginAt(): static
+    {
+        $this->lastLoginAt = new \DateTimeImmutable('now');
 
         return $this;
     }
