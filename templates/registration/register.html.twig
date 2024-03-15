@@ -10,18 +10,47 @@
            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
        {% endfor %}
 
-       <h1>Register</h1>
-
        {{ form_errors(registrationForm) }}
 
-       {{ form_start(registrationForm) }}
-       {{ form_row(registrationForm.email) }}
-       {{ form_row(registrationForm.plainPassword, {
-           label: 'Password'
+       {{ form_start(registrationForm, {
+           attr: {
+               'class': 'm-auto p-5 shadow rounded bg-body-tertiary base-form'
+           }
        }) }}
-       {{ form_row(registrationForm.agreeTerms) }}
 
-       <button type="submit" class="btn">Register</button>
+       <h1 class="h3 mb-3 fw-normal">
+           Regisztráció
+       </h1>
+
+       {{ form_row(registrationForm.email, {
+           row_attr: {
+               'class': 'form-floating mb-3'
+           },
+           label: 'Email cím',
+           attr: {
+               placeholder: 'Jelszó',
+               required: false
+           },
+       }) }}
+
+       {{ form_row(registrationForm.plainPassword, {
+           row_attr: {
+               'class': 'form-floating mb-3'
+           },
+           label: 'Jelszó',
+           attr: {
+               placeholder: 'Jelszó'
+           },
+       }) }}
+
+       {{ form_row(registrationForm.agreeTerms, {
+           'label': 'Elfogadom a felhasználási feltételeket.'
+       }) }}
+
+       <button class="btn btn-secondary py-2 w-100 me-1" type="submit">
+           Regisztráció
+       </button>
+
        {{ form_end(registrationForm) }}
    </div>
 {% endblock %}
