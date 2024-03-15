@@ -8,6 +8,7 @@ use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,9 +78,12 @@ class RegistrationController extends AbstractController
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request): Response
     {
+        if ($this->getUser()->getVerifiedAt()) {
+            return $this->redirectToRoute('app_home');
+        }
+
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        // validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
@@ -88,9 +92,24 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        $this->addFlash('success', 'Köszönjük az email cím megerősítését, fiókja mostantól teljes körűen elérhető.');
 
         return $this->redirectToRoute('app_register');
+    }
+
+    #[Route('/resend-verification-email', name: 'app_resend_verification_email')]
+    public function resendVerificationEmail(): JsonResponse
+    {
+        $this->emailVerifier->sendEmailConfirmation('app_verify_email', $this->getUser(),
+            (new TemplatedEmail())
+                ->from(new Address('admin@titi-storage.com', 'Titi Admin'))
+                ->to($this->getUser()->getEmail())
+                ->subject('Please Confirm your Email')
+                ->htmlTemplate('registration/confirmation_email.html.twig')
+        );
+
+        return $this->json([
+            'message' => 'Sikeresen újraküldtük a megerősítő emailt, kérjük, ellenőrizze postafiókját.',
+        ]);
     }
 }
