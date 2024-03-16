@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Asset;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Product
 {
     #[ORM\Id]
@@ -36,6 +37,12 @@ class Product
     #[Asset\NotBlank]
     #[Asset\Type(type: ProductUnit::class)]
     private ProductUnit $unit;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -100,5 +107,27 @@ class Product
         $this->unit = $unit;
 
         return $this;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt->format('Y.m.d.');
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->updatedAt->format('Y.m.d.');
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
+    #[ORM\PrePersist]
+    public function setUpdatedAtValue(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }

@@ -2,6 +2,33 @@
 
 {% block body %}
     <div class="container">
-
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{ product.name }}
+                                {{ product.inStock }}
+                                {{ product.unit|trans }}
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        Szerkesztés
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        Törlés
+                                    </button>
+                                </div>
+                                <small class="text-body-secondary">
+                                    {{ product.updatedAt }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
