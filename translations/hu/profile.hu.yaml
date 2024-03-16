@@ -1,0 +1,14 @@
+page:
+    title: 'Profil | TitiStorage'
+
+form:
+    title: 'Profil szerkesztése'
+
+    label:
+        email: 'Email cím'
+        username: 'Felhasználónév'
+
+    button:
+        save: 'Mentés'
+
+    success: 'Sikeresen frissítetted az adataidat.'

@@ -1,3 +1,5 @@
+{% trans_default_domain 'menu' %}
+
 <div class="dropdown text-end">
     <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
        data-bs-toggle="dropdown" aria-expanded="false">
@@ -5,16 +7,8 @@
     </a>
     <ul class="dropdown-menu text-small">
         <li>
-            Szia {{ app.user.userIdentifier }}
-        </li>
-        <li>
-            <a class="dropdown-item">
-                Beállítások
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item">
-                Profilom
+            <a href="{{ path('app_profile') }}" class="dropdown-item">
+                {{ 'menu.profile'|trans }}
             </a>
         </li>
         <li>
@@ -22,7 +16,7 @@
         </li>
         <li>
             <a href="{{ path('app_logout') }}" class="dropdown-item">
-                Kilépés
+                {{ 'menu.logout'|trans }}
             </a>
         </li>
     </ul>

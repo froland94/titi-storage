@@ -1,0 +1,14 @@
+page:
+    title: 'Profile | TitiStorage'
+
+form:
+    title: 'Update profile'
+
+    label:
+        email: 'Email address'
+        username: 'Username'
+
+    button:
+        save: 'Save'
+
+    success: 'You have successfully updated your data.'
