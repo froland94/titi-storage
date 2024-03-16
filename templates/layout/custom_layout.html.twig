@@ -18,3 +18,8 @@
     {{- form_errors(form) -}}
     </{{ element|default('div') }}>
 {%- endblock form_row %}
+
+{%- block submit_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('btn-secondary py-2 w-100 me-1 py-2 w-100 me-1'))|trim}) -%}
+    {{- parent() -}}
+{%- endblock submit_widget %}

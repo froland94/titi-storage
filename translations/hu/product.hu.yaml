@@ -1,0 +1,19 @@
+page:
+    title: 'Új termék rögzítése | TitiStorage'
+
+form:
+    title: 'Termék létrehozása'
+    name: 'Termék megnevezése'
+    description: 'Rövid leírás a termékről'
+    inStock: 'Raktáron'
+    unit: 'Egység'
+    submit: 'Létrehozás'
+
+unit:
+    piece: 'Darab'
+    kg: 'Kg'
+    liter: 'Liter'
+    milliliter: 'Milliliter'
+
+success:
+    save: 'Sikeres mentés!'

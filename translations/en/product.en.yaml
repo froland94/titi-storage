@@ -1,0 +1,19 @@
+page:
+    title: 'New product registration | TitiStorage'
+
+form:
+    title: 'Termék létrehozása'
+    name: 'Product name'
+    description: 'Brief description of the product'
+    inStock: 'In stock'
+    unit: 'Unit'
+    submit: 'Create'
+
+unit:
+    piece: 'Piece'
+    kg: 'Kilogram'
+    liter: 'Liter'
+    milliliter: 'Milliliter'
+
+success:
+    save: 'Sikeres mentés!'

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain 'product' %}
+
+{% block title %}
+    {{ 'page.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {{ form_start(productForm, {
+            attr: {
+                'class': 'm-auto p-5 shadow rounded bg-body-tertiary base-form'
+            }
+        }) }}
+
+        <h1 class="h3 mb-3 fw-normal">
+            {{ 'form.title'|trans }}
+        </h1>
+
+        {{ form_end(productForm) }}
+    </div>
+{% endblock %}
