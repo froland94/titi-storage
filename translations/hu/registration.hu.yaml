@@ -3,15 +3,12 @@ page:
 
 form:
     title: 'Regisztráció'
+    email: 'Email cím'
+    username: 'Felhasználónév'
+    plainPassword: 'Jelszó'
+    agreeTerms: 'Elfogadom a felhasználási feltételeket.'
+    register: 'Regisztráció'
 
-    label:
-        email: 'Email cím'
-        username: 'Felhasználónév'
-        password: 'Jelszó'
-        terms: 'Elfogadom a felhasználási feltételeket.'
-
-    button:
-        register: 'Regisztráció'
 
 verification:
     success: 'Köszönjük az email cím megerősítését, fiókja mostantól teljes körűen elérhető.'

@@ -5,9 +5,11 @@
         </a>
     </li>
 
-    <li>
-        <a class="nav-link px-2 link-body-emphasis" href="{{ path('product.create') }}">
-            Termékek
-        </a>
-    </li>
+    {% if app.user %}
+        <li>
+            <a class="nav-link px-2 link-body-emphasis" href="{{ path('product.create') }}">
+                Termékek
+            </a>
+        </li>
+    {% endif %}
 </ul>

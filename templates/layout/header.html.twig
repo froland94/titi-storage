@@ -1,12 +1,12 @@
 <header class="p-3 mb-3 border-bottom">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            {% include 'base/header/logo.html.twig' %}
+            {% include 'layout/header/logo.html.twig' %}
 
-            {% include 'base/header/menu.html.twig' %}
+            {% include 'layout/header/menu.html.twig' %}
 
             {% if app.user %}
-                {% include 'base/header/submenu.html.twig' %}
+                {% include 'layout/header/submenu.html.twig' %}
             {% endif %}
         </div>
     </div>

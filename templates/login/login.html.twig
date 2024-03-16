@@ -19,11 +19,11 @@
                        name="_username"
                        id="username"
                        class="form-control"
-                       placeholder="{{ 'form.label.email'|trans }}"
+                       placeholder="{{ 'form.email'|trans }}"
                        autocomplete="email"
                        required autofocus>
                 <label for="username">
-                    {{ 'form.label.email'|trans }}
+                    {{ 'form.email'|trans }}
                 </label>
             </div>
 
@@ -32,11 +32,11 @@
                        class="form-control"
                        name="_password"
                        id="password"
-                       placeholder="{{ 'form.label.password'|trans }}"
+                       placeholder="{{ 'form.password'|trans }}"
                        autocomplete="current-password"
                        required>
                 <label for="password">
-                    {{ 'form.label.password'|trans }}
+                    {{ 'form.password'|trans }}
                 </label>
             </div>
 
@@ -45,16 +45,16 @@
             <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" name="_remember_me" id="remember-me">
                 <label class="form-check-label" for="remember-me">
-                    {{ 'form.label.remember_me'|trans }}
+                    {{ 'form.remember_me'|trans }}
                 </label>
             </div>
 
             <div class="d-flex">
                 <button class="btn btn-secondary py-2 w-100 me-1" type="submit">
-                    {{ 'form.button.login'|trans }}
+                    {{ 'form.login'|trans }}
                 </button>
                 <a class="btn btn-secondary py-2 w-100 ms-1" type="submit" href="{{ path('app_register') }}">
-                    {{ 'form.button.register'|trans }}
+                    {{ 'form.register'|trans }}
                 </a>
             </div>
 
