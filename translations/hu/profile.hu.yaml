@@ -3,12 +3,9 @@ page:
 
 form:
     title: 'Profil szerkesztése'
+    email: 'Email cím'
+    username: 'Felhasználónév'
+    update: 'Mentés'
 
-    label:
-        email: 'Email cím'
-        username: 'Felhasználónév'
-
-    button:
-        save: 'Mentés'
 
     success: 'Sikeresen frissítetted az adataidat.'

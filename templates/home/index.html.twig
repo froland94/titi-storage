@@ -14,11 +14,23 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">
-                                        Szerkesztés
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <i class="bi bi-plus-circle"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">
-                                        Törlés
+
+                                    <a href="{{ path('product.edit', {'id': product.id}) }}" type="button" class="btn btn-outline-secondary">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    <button type="button"
+                                            class="btn btn-outline-secondary product-delete-btn"
+                                            data-route="{{ path('product.delete', {'id': product.id}) }}"
+                                            data-token="{{ csrf_token('delete' ~ product.id) }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <i class="bi bi-dash-circle"></i>
                                     </button>
                                 </div>
                                 <small class="text-body-secondary">

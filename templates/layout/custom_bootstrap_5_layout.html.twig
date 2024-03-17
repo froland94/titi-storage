@@ -4,7 +4,7 @@
     {%- if compound is defined and compound -%}
         {%- set element = 'fieldset' -%}
     {%- endif -%}
-    {%- set widget_attr = {attr: {'placeholder': attr.placeholder|default(id)}} -%}
+    {%- set widget_attr = {attr: {'placeholder': attr.placeholder|default('')}} -%}
     {%- if help is not empty -%}
         {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
     {%- endif -%}

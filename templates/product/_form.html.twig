@@ -1,0 +1,15 @@
+{% trans_default_domain 'product' %}
+
+{{ form_start(form, {
+    attr: {
+        'class': 'm-auto p-5 shadow rounded bg-body-tertiary base-form'
+    }
+}) }}
+
+<h1 class="h3 mb-3 fw-normal">
+    {{ 'form.title'|trans }}
+</h1>
+
+{{ form_widget(form) }}
+
+{{ form_end(form) }}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain 'product' %}
+
+{% block title %}
+    {{ 'page.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {{ include('product/_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -7,7 +7,7 @@ form:
     description: 'Brief description of the product'
     inStock: 'In stock'
     unit: 'Unit'
-    submit: 'Create'
+    submit: 'Save'
 
 unit:
     piece: 'Piece'
@@ -16,4 +16,5 @@ unit:
     milliliter: 'Milliliter'
 
 success:
-    save: 'Sikeres mentés!'
+    save: 'Successful save!'
+    delete: 'Successful deletion!'

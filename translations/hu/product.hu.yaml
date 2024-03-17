@@ -7,7 +7,7 @@ form:
     description: 'Rövid leírás a termékről'
     inStock: 'Raktáron'
     unit: 'Egység'
-    submit: 'Létrehozás'
+    submit: 'Mentés'
 
 unit:
     piece: 'Darab'
@@ -17,3 +17,4 @@ unit:
 
 success:
     save: 'Sikeres mentés!'
+    delete: 'Sikeres törlés!'

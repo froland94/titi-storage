@@ -51,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?\DateTimeImmutable $lastLoginAt = null;
 
-    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'user_id')]
+    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'user')]
     private Collection $products;
 
     public function __construct()
