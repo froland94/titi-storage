@@ -1,0 +1,16 @@
+.toastify {
+    background: $toast-background-color;
+    color: $toast-color;
+    box-shadow: $toast-box-shadow;
+    border-radius: $toast-border-radius;
+    border: $toast-border-width solid $toast-border-color;
+    font-size: $toast-font-size;
+
+    .bi-check2-circle {
+        color: var(--bs-success-text-emphasis);
+    }
+
+    .bi-exclamation-triangle-fill {
+        color: var(--bs-danger-text-emphasis);
+    }
+}
