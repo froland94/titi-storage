@@ -1,3 +1,4 @@
 menu:
     profile: 'Profile'
     logout: 'Logout'
+    product: 'Products'
