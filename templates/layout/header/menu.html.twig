@@ -1,3 +1,5 @@
+{% trans_default_domain 'menu' %}
+
 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
     <li>
         <a class="nav-link px-2 link-body-emphasis" href="{{ path('app_home') }}">
@@ -8,7 +10,7 @@
     {% if app.user %}
         <li>
             <a class="nav-link px-2 link-body-emphasis" href="{{ path('product.new') }}">
-                Termékek
+                {{ 'menu.product'|trans }}
             </a>
         </li>
     {% endif %}
