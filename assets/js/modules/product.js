@@ -1,4 +1,4 @@
-import { showToast } from '../components/toast';
+import { showSuccessToast } from '../components/toast';
 
 export default class Product {
     constructor() {
@@ -30,7 +30,7 @@ export default class Product {
         }).then(response => {
             return response.json();
         }).then(data => {
-            showToast(data.message);
+            showSuccessToast(data.message);
 
             target.closest('.col').remove();
         });
