@@ -1,16 +1,9 @@
-import { showToast } from './toast';
+import { showSuccessToast } from '../components/toast';
 
 export default class ResendVerificationEmail {
+    btn = document.getElementById('resend-verification-email-btn');
+
     constructor() {
-        this.initElements();
-        this.initListeners();
-    }
-
-    initElements() {
-        this.btn = document.getElementById('resend-verification-email-btn');
-    }
-
-    initListeners() {
         this.btn && this.btn.addEventListener('click', this.resendVerificationEmail);
     }
 
@@ -22,7 +15,7 @@ export default class ResendVerificationEmail {
         }).then(data => {
             this.btn.remove();
 
-            showToast(data.message);
+            showSuccessToast(data.message);
         });
     }
 }
