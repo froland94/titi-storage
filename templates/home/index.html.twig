@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}
+
 {% block body %}
+    {{ include('product/_confirm-modal.html.twig') }}
+
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for product in products %}
@@ -23,7 +30,9 @@
                                     </a>
 
                                     <button type="button"
-                                            class="btn btn-outline-secondary product-delete-btn"
+                                            class="btn btn-outline-secondary trigger-confirm-modal-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirm-modal"
                                             data-route="{{ path('product.delete', {'id': product.id}) }}"
                                             data-token="{{ csrf_token('delete' ~ product.id) }}">
                                         <i class="bi bi-trash"></i>

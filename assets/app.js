@@ -2,8 +2,8 @@ import './styles/app.scss';
 
 import 'bootstrap';
 
-import ResendVerificationEmail from './js/modules/resend-verification-email';
-import Product from './js/modules/product';
+import ResendVerificationEmail from './js/components/resend-verification-email';
+import ConfirmModal from './js/components/confirm-modal';
 
 new ResendVerificationEmail();
-new Product();
+new ConfirmModal();
