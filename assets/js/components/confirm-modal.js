@@ -26,29 +26,29 @@ export default class ConfirmModal {
 
     onModalShow = (event) => {
         const target = event.currentTarget;
-        const route = target.getAttribute('data-route');
+        const path = target.getAttribute('data-path');
         const token = target.getAttribute('data-token');
 
-        this.modalConfirmBtn.setAttribute('data-route', route);
+        this.modalConfirmBtn.setAttribute('data-path', path);
         this.modalConfirmBtn.setAttribute('data-token', token);
 
         sourceElement = target;
     }
 
     onModalHide = () => {
-        this.modalConfirmBtn.removeAttribute('data-route');
+        this.modalConfirmBtn.removeAttribute('data-path');
         this.modalConfirmBtn.removeAttribute('data-token');
     }
 
     postAction = (event) => {
         const target = event.currentTarget;
-        const route = target.getAttribute('data-route');
+        const path = target.getAttribute('data-path');
         const token = target.getAttribute('data-token');
 
         const data = new FormData();
         data.append('_token', token);
 
-        fetch(route, {
+        fetch(path, {
             method: 'POST',
             body: data
         }).then(response => {

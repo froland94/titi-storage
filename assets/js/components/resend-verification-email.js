@@ -1,4 +1,4 @@
-import { showSuccessToast } from '../components/toast';
+import { showSuccessToast } from './toast';
 
 export default class ResendVerificationEmail {
     btn = document.getElementById('resend-verification-email-btn');
@@ -10,7 +10,7 @@ export default class ResendVerificationEmail {
     resendVerificationEmail = (e) => {
         const target = e.currentTarget;
 
-        fetch(target.getAttribute('data-route')).then(response => {
+        fetch(target.getAttribute('data-path')).then(response => {
             return response.json();
         }).then(data => {
             this.btn.remove();
