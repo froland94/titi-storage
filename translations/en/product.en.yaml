@@ -2,7 +2,7 @@ page:
     title: 'New product registration | TitiStorage'
 
 form:
-    title: 'Termék létrehozása'
+    title: 'Create product'
     name: 'Product name'
     description: 'Brief description of the product'
     inStock: 'In stock'
@@ -18,3 +18,6 @@ unit:
 success:
     save: 'Successful save!'
     delete: 'Successful deletion!'
+    add_stock: 'Inventory successfully increased!'
+    remove_stock: 'Inventory successfully decreased!'
+    out_of_stock: 'The product inventory has reached 0!'

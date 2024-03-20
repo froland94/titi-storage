@@ -9,23 +9,31 @@
     {{ include('product/_confirm-modal.html.twig') }}
 
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-xl-3 row-cols-xxl-4 g-3">
             {% for product in products %}
                 <div class="col">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <p class="card-text">
+                            <p class="card-text text-truncate">
                                 {{ product.name }}
-                                {{ product.inStock }}
+                            </p>
+                            <p class="text-lowercase">
+                                <span class="in-stock">
+                                    {{ product.inStock }}
+                                </span>
                                 {{ product.unit|trans }}
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-secondary">
+                                    <button type="button"
+                                            class="btn btn-outline-secondary add-stock"
+                                            data-path="{{ path('product.addStock', {'id': product.id}) }}">
                                         <i class="bi bi-plus-circle"></i>
                                     </button>
 
-                                    <a href="{{ path('product.edit', {'id': product.id}) }}" type="button" class="btn btn-outline-secondary">
+                                    <a type="button"
+                                       href="{{ path('product.edit', {'id': product.id}) }}"
+                                       class="btn btn-outline-secondary">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
 
@@ -33,12 +41,14 @@
                                             class="btn btn-outline-secondary trigger-confirm-modal-btn"
                                             data-bs-toggle="modal"
                                             data-bs-target="#confirm-modal"
-                                            data-route="{{ path('product.delete', {'id': product.id}) }}"
+                                            data-path="{{ path('product.delete', {'id': product.id}) }}"
                                             data-token="{{ csrf_token('delete' ~ product.id) }}">
                                         <i class="bi bi-trash"></i>
                                     </button>
 
-                                    <button type="button" class="btn btn-outline-secondary">
+                                    <button type="button"
+                                            class="btn btn-outline-secondary remove-stock"
+                                            data-path="{{ path('product.removeStock', {'id': product.id}) }}">
                                         <i class="bi bi-dash-circle"></i>
                                     </button>
                                 </div>

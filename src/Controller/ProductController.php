@@ -16,8 +16,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/product')]
 class ProductController extends AbstractController
 {
-    public function __construct(private TranslatorInterface $translator) {}
-
+    public function __construct(private readonly TranslatorInterface $translator) {}
 
     #[Route('/new', name: 'product.new', methods: ['GET', 'POST'])]
     public function new(
@@ -73,6 +72,40 @@ class ProductController extends AbstractController
 
         return $this->json([
             'message' => $this->translator->trans('success.delete', domain: 'product'),
+        ]);
+    }
+
+    #[Route('/add-stock/{id}', name: 'product.addStock', methods: ['POST'])]
+    public function addStock(Product $product, EntityManagerInterface $entityManager): JsonResponse
+    {
+        $product->setInStock($product->getInStock() + 1);
+        $entityManager->flush();
+
+        return $this->json([
+            'message' => $this->translator->trans('success.add_stock', domain: 'product'),
+            'inStock' => $product->getInStock(),
+            'success' => true,
+        ]);
+    }
+
+    #[Route('/remove-stock/{id}', name: 'product.removeStock', methods: ['POST'])]
+    public function removeStock(Product $product, EntityManagerInterface $entityManager): JsonResponse
+    {
+        if ($product->getInStock() === 0) {
+            return $this->json([
+                'success' => false,
+                'message' => $this->translator->trans('success.out_of_stock', domain: 'product'),
+                'inStock' => $product->getInStock(),
+            ]);
+        }
+
+        $product->setInStock($product->getInStock() - 1);
+        $entityManager->flush();
+
+        return $this->json([
+            'message' => $this->translator->trans('success.remove_stock', domain: 'product'),
+            'inStock' => $product->getInStock(),
+            'success' => true,
         ]);
     }
 }
