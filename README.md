@@ -26,3 +26,4 @@
 - If you work on linux and cannot edit some of the project files, just run: `docker compose run --rm php chown -R $(id -u):$(id -g) .`
 - Run `yarn stylelint` to get SCSS files warnings
 - Run `yarn stylelint-fix` to automatically fix SCSS files
+- Run `./vendor/bin/php-cs-fixer fix` to fix PHP files
