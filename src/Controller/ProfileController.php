@@ -17,8 +17,7 @@ class ProfileController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         TranslatorInterface $translator
-    ): Response
-    {
+    ): Response {
         $form = $this->createForm(ProfileFormType::class, $this->getUser());
 
         $form->handleRequest($request);

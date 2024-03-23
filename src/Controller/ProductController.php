@@ -16,14 +16,15 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/product')]
 class ProductController extends AbstractController
 {
-    public function __construct(private readonly TranslatorInterface $translator) {}
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+    }
 
     #[Route('/new', name: 'product.new', methods: ['GET', 'POST'])]
     public function new(
         Request $request,
         EntityManagerInterface $entityManager
-    ): Response|RedirectResponse
-    {
+    ): Response|RedirectResponse {
         $product = new Product();
         $form = $this->createForm(ProductFormType::class, $product);
 
@@ -91,7 +92,7 @@ class ProductController extends AbstractController
     #[Route('/remove-stock/{id}', name: 'product.removeStock', methods: ['POST'])]
     public function removeStock(Product $product, EntityManagerInterface $entityManager): JsonResponse
     {
-        if ($product->getInStock() === 0) {
+        if (0 === $product->getInStock()) {
             return $this->json([
                 'success' => false,
                 'message' => $this->translator->trans('success.out_of_stock', domain: 'product'),

@@ -10,7 +10,9 @@ use Symfony\Component\Security\Core\Event\AuthenticationSuccessEvent;
 #[AsEventListener]
 class LoginListener
 {
-    public function __construct(private readonly EntityManagerInterface $entityManager) {}
+    public function __construct(private readonly EntityManagerInterface $entityManager)
+    {
+    }
 
     #[NoReturn]
     public function __invoke(AuthenticationSuccessEvent $event): void

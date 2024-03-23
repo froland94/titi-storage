@@ -12,7 +12,7 @@ enum ProductUnit: string implements TranslatableInterface
     case LITER = 'liter';
     case MILLILITER = 'milliliter';
 
-    public function trans(TranslatorInterface $translator, string $locale = null): string
+    public function trans(TranslatorInterface $translator, ?string $locale = null): string
     {
         return match ($this) {
             self::PIECE => $translator->trans('unit.piece', domain: 'product'),

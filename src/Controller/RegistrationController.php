@@ -23,15 +23,15 @@ class RegistrationController extends AbstractController
     public function __construct(
         private readonly EmailVerifier $emailVerifier,
         private readonly TranslatorInterface $translator,
-    ) {}
+    ) {
+    }
 
     #[Route('/register', name: 'app_register')]
     public function register(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
         EntityManagerInterface $entityManager
-    ): Response|RedirectResponse
-    {
+    ): Response|RedirectResponse {
         if ($this->getUser()) {
             return $this->redirectToRoute('app_home');
         }
