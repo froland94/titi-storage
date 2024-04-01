@@ -1,33 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('home') }}
-{% endblock %}
-
 {% block body %}
     {{ include('product/_confirm-modal.html.twig') }}
 
     <div class="container">
         <div class="row row-cols-1 row-cols-xl-3 row-cols-xxl-4 g-3">
             {% for product in products %}
-                <div class="col">
+                <div {{ stimulus_controller('product') }} {{ stimulus_target('product', 'product') }} class="col">
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <p class="card-text text-truncate">
                                 {{ product.name }}
                             </p>
                             <p class="text-lowercase">
-                                <span class="in-stock">
+                                <span {{ stimulus_target('product', 'stockCounter') }}>
                                     {{ product.inStock }}
                                 </span>
                                 {{ product.unit|trans }}
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button"
-                                            class="btn btn-outline-secondary add-stock"
-                                            data-path="{{ path('product.addStock', {'id': product.id}) }}">
+                                    <button {{ stimulus_action('product', 'modifyProductStock', 'click', {
+                                        url: path('product.addStock', {'id': product.id})
+                                    }) }}
+                                            type="button"
+                                            class="btn btn-outline-secondary">
                                         <i class="bi bi-plus-circle"></i>
                                     </button>
 
@@ -37,18 +34,20 @@
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
 
-                                    <button type="button"
-                                            class="btn btn-outline-secondary trigger-confirm-modal-btn"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#confirm-modal"
-                                            data-path="{{ path('product.delete', {'id': product.id}) }}"
-                                            data-token="{{ csrf_token('delete' ~ product.id) }}">
+                                    <button {{ stimulus_action('product', 'deleteProduct', 'click', {
+                                        url: path('product.delete', {'id': product.id}),
+                                        token: csrf_token('delete' ~ product.id)
+                                    }) }}
+                                            type="button"
+                                            class="btn btn-outline-secondary">
                                         <i class="bi bi-trash"></i>
                                     </button>
 
-                                    <button type="button"
-                                            class="btn btn-outline-secondary remove-stock"
-                                            data-path="{{ path('product.removeStock', {'id': product.id}) }}">
+                                    <button {{ stimulus_action('product', 'modifyProductStock', 'click', {
+                                        url: path('product.removeStock', {'id': product.id})
+                                    }) }}
+                                            type="button"
+                                            class="btn btn-outline-secondary">
                                         <i class="bi bi-dash-circle"></i>
                                     </button>
                                 </div>

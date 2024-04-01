@@ -1,13 +1,15 @@
 {% trans_default_domain 'registration' %}
 
 {% if app.user and app.user.getVerifiedAt is null %}
-    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <div {{ stimulus_controller('components--resend-verification-email', { url: path('app_resend_verification_email')}) }}
+            class="alert alert-warning alert-dismissible fade show text-center"
+            role="alert">
         {{ 'verification.warning.info'|trans }}
-        <span id="resend-verification-email-btn"
-           data-path="{{ path('app_resend_verification_email') }}"
-           class="alert-link text-decoration-underline cursor-pointer">
+        <a {{ stimulus_action('components--resend-verification-email', 'resendEmail') }}
+                data-path="{{ path('app_resend_verification_email') }}"
+                class="alert-link text-decoration-underline cursor-pointer">
             {{ 'verification.warning.resend_verification'|trans }}
-        </span>
+        </a>
 
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
